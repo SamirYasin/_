@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class Homework08 {
 
     //Task 1
-
+/*
     public static int countConsonants(String str) {
         str = str.replaceAll("[^A-Za-z]", "");
         str = str.replaceAll("[AEIOUaeiou]", "");
@@ -61,4 +61,6 @@ public class Homework08 {
 
         return matcher.matches();
     }
+
+ */
 }

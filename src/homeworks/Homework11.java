@@ -1,145 +1,116 @@
 package homeworks;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public class Homework11 {
     public static void main(String[] args) {
-        /*Task 1
+        String s = " qwqwqwqu";
+        int birth = 1920;
+        String[] strings = {"java", "appium", "123", "apple", "microsoft"};
 
-
-        int[] ints = new int[10];
-        ints[2] = 23; ints[4] = 12; ints[7] = 34; ints[9] = 7; ints[6] = 15; ints[0] = 89;
-        System.out.println(ints[3]);
-        System.out.println(ints[0]);
-        System.out.println(ints[9]);
-        System.out.println(Arrays.toString(ints));
-
-        Task 2
-        String[] strings = new String[5];
-        strings[1] = "abc";
-        strings[4] = "xyz";
-        System.out.println(strings[3]);
-        System.out.println(strings[0]);
-        System.out.println(strings[4]);
-        System.out.println(Arrays.toString(strings));
-
-         Task 3
-        int[] ints = {23, -34, -56, 0, 89, 100};
-        System.out.println(Arrays.toString(ints));
-        System.out.println(Arrays.toString(Arrays.stream(ints).sorted().toArray()));
-
-         Task 4
-        String[] countries = {"Germany", "Argentina", "Ukraine", "Romania"};
-        System.out.println(Arrays.toString(countries));
-        System.out.println(Arrays.toString(Arrays.stream(countries).sorted().toArray()));
-
-         Task 5
-        String[] dogs = {"Scooby Doo", "Snoopy", "Blue", "Pluto", "Dino", "Sparky"};
-        System.out.println(Arrays.toString(dogs));
-        if(Arrays.asList(dogs).contains("Pluto")){
-            System.out.println(true);
-        } else{
-            System.out.println(false);
+        int[] oneToOneHundred = new int[100];
+        for (int i = 1; i < 100; i++) {
+            oneToOneHundred[i] = i;
         }
+        System.out.println(countPrimes(oneToOneHundred));
+    }
 
-         Task 6
-        String[] cats = {"Garfield", "Tom", "Sylvester", "Azrael"};
-        System.out.println(Arrays.toString(Arrays.stream(cats).sorted().toArray()));
-        if(Arrays.asList(cats).contains("Garfield") & Arrays.asList(cats).contains("Felix")){
-            System.out.println(true);
-        } else{
-            System.out.println(false);
-
-         Task 7
-        Double[] doubles = {10.5, 20.75, 70.0, 80.0, 15.75};
-        System.out.println(Arrays.toString(doubles));
-        for (double i : doubles) {
-            System.out.println(i);
-       Task 8
-        int countLetter = 0, countUpper = 0, countLower = 0, countNums = 0, countSC = 0;
-        char[] chars = {'A', 'b', 'G', 'H', '7', '5', '&', '*', 'e', '@', '4'};
-
-        for (char i: chars
-             ) {
-            if(Character.isLetter(i)){
-                countLetter++;
-                if(Character.isUpperCase(i)){
-                    countUpper++;
-                } else{
-                    countLower++;
-                }
+    //Task 1
+    public static String noSpace(String s) {
+        String noS = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != ' ') noS += s.charAt(i);
         }
-            else if(Character.isDigit(i)){
-                countNums++;
-            } else{
-                countSC++;
+        return noS;
+    }
+
+    //Task 2
+    public static String replaceFirstLast(String s) {
+        if (s.length() < 2) {
+            return "";
+        }
+        String begin = "", end = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isSpaceChar(s.charAt(i))) {
+                begin += s.charAt(i);
+                break;
             }
         }
-        System.out.println(Arrays.toString(chars));
-        System.out.println("Letters = " + countLetter);
-        System.out.println("Uppercase letters = " + countUpper);
-        System.out.println("Lowercase letters = " + countLower);
-        System.out.println("Digits = " + countNums);
-        System.out.println("Special Characters = " + countSC);
+        for (int i = s.length() - 1; i > 0; i--) {
+            if (!Character.isSpaceChar(s.charAt(i))) {
+                end += s.charAt((i));
+                break;
+            }
+        }
+        return end + s.substring(s.indexOf(begin) + 1, s.lastIndexOf(end)) + begin;
+    }
 
+    //Task 3
+    public static Boolean hasVowel(String s) {
+        if (s.toLowerCase().contains("a") |
+                s.toLowerCase().contains("e") |
+                s.toLowerCase().contains("i") |
+                s.toLowerCase().contains("o") |
+                s.toLowerCase().contains("u")) {
+            return true;
+        }
+        return false;
+    }
 
-      Task 9
-        String[] strings = {"Pen", "notebook", "Book", "paper", "bag", "pencil", "Ruler"};
-        System.out.println(Arrays.toString(strings));
+    //Task 4
+    public static String checkAge(int yearOfBirth) {
+        int age = 2022 - yearOfBirth;
+        if (age < 16 & age >= 0) return "AGE IS NOT ALLOWED";
+        else if (age > 100 | age < 0) return "AGE IS NOT VALID";
+        else return "AGE IS ALLOWED";
+    }
 
-        int countUpper = 0, countLower = 0, countBp = 0, countBookPen = 0;
+    //Task 5
+    public static int averageOfEdges(int a, int b, int c) {
+        int max = Math.max(Math.max(a, b), c);
+        int min = Math.min(Math.min(a, b), c);
+        return (max + min) / 2;
+    }
+
+    //Task 6
+    public static String[] noA(String[] strings) {
+        String[] noAStrings = new String[strings.length];
         for (int i = 0; i < strings.length; i++) {
-            if (Character.isUpperCase(strings[i].charAt(0))) {
-                countUpper += 1;
-            } else if (Character.isLowerCase(strings[i].charAt(0))) {
-                countLower += 1;
+            if (strings[i].startsWith("A") | strings[i].startsWith("a")) {
+                noAStrings[i] = "###";
+            } else {
+                noAStrings[i] = strings[i];
             }
         }
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i].toLowerCase(Locale.ROOT).charAt(0) == ('b') | strings[i].toLowerCase(Locale.ROOT).charAt(0) == 'p') {
-                countBp += 1;
+        return noAStrings;
+    }
+
+    // Task 7
+    public static int[] no3or5(int[] ints) {
+        int[] no3or5ints = new int[ints.length];
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] % 3 == 0 & ints[i] % 5 == 0) {
+                no3or5ints[i] = 101;
+            } else if (ints[i] % 5 == 0) {
+                no3or5ints[i] = 99;
+            } else if (ints[i] % 3 == 0) {
+                no3or5ints[i] = 100;
+            } else {
+                no3or5ints[i] = ints[i];
             }
         }
-        for (String word : strings) {
-                 if(word.toLowerCase(Locale.ROOT).contains("book") | word.toLowerCase(Locale.ROOT).contains("pen")){
-                     countBookPen += 1;
-                 }
-             }
-        System.out.println("Elements starts with uppercase = " + countUpper);
-        System.out.println("Elements starts with lowercase = " + countLower);
-        System.out.println("Elements starts with B or p = " + countBp);
-        System.out.println("Elements having \"book\" or \"pen\" = " + countBookPen);
-
-         Task 10
-        int[] ints = {3,5,7,10,0,20,17,10,23,56,78};
-        int countMore = 0, countLess = 0, count10 = 0;
-        System.out.println(Arrays.toString(ints));
-        for (int i: ints) {
-            if(i > 10){
-                countMore++;
-            } else if(i < 10){
-                countLess++;
-            } else{
-                count10++;
-            }
-        }
-        System.out.println("Elements that are more than 10 = " + countMore);
-        System.out.println("Elements that are less than 10 = " + countLess);
-        System.out.println("Elements that are 10 = " + count10);
-
-        Task 11
-        int[] ints1 = {5, 8, 13, 1, 2};
-        int[] ints2 = {9, 3, 67, 1, 0};
-        int[] ints3 = new int[ints2.length];
-        for (int i = 0; i < ints1.length ; i++) {
-            ints3[i] = (Math.max(ints1[i], ints2[i]));
-        }
-        System.out.println(Arrays.toString(ints1));
-        System.out.println(Arrays.toString(ints2));
-        System.out.println(Arrays.toString(ints3));
-
-         */
+        return no3or5ints;
+    }
+    //Task 8
+    public static Boolean isPrime(int num){
+        for (int i = 2; i < num - 1; i++) {
+            if(num % i == 0) return false;
+        } return true;
+    }
+    public static int countPrimes(int[] nums){
+        int count = 0;
+        for (int num : nums) {
+            if(num > 1 & isPrime(num)) count++;
+        } return count;
     }
 }
-

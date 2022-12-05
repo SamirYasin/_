@@ -85,7 +85,7 @@ public class Project08WithComments {
         }
         return ' ';
     }
-    /* the logic is the exact same as in task 3
+    /* the logic is the exact same as in task 2
      */
     //Task 4
     public static int findMissingNumber(int[] nums){
@@ -98,7 +98,7 @@ public class Project08WithComments {
     /*
     were told that the array were passing in has a sequence of numbers that increases by 1 but, these numbers are not
     in order for example {2,7,1,5,3,6} so we need to put them in order first. (line 92 is how we sort it)
-    Before -> {2,1,5,3} After -> {1,2,3,5,6,7}. so now we can find our missing number by looping and checking
+    Before -> {2,7,1,5,3,6} After -> {1,2,3,5,6,7}. so now we can find our missing number by looping and checking
     if the i is equal to i + 1. so at first, in our sorted array were checking if (1) + 1 = (2). so this loop will
     continue until i = 3, because at this point i = 3 and (i + 1) = 5, so our condition which was if (3) + 1 = 5.
     since this is not true, we know that our missing number must be 4. so we just return 3 + 1;

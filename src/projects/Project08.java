@@ -41,6 +41,7 @@ public class Project08 {
         return -1;
     }
 
+
     //Task 3
     public static char findFirstUniqueCharacter(String words) {
         ArrayList<Character> words1 = new ArrayList<>();
@@ -58,6 +59,7 @@ public class Project08 {
         }
         return ' ';
     }
+
     //Task 4
     public static int findMissingNumber(int[] nums){
         Arrays.sort(nums);
@@ -66,4 +68,5 @@ public class Project08 {
 
         } return -1;
     }
+
 }

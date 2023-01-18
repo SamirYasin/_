@@ -1,15 +1,16 @@
 package homeworks;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
+
 
 public class Homework14 {
     public static void main(String[] args) {
         fizzBuzz1(100);
         System.out.println(fizzBuzz2(100));
 
-        System.out.println(findBiggestNumber("525"));
+        System.out.println(findSumNumbers("123abc4"));
+
+        System.out.println(findBiggestNumber("hjghj1qq525"));
 
         System.out.println(countSequenceOfCharacters("aaabbbbcccddddd"));
     }
@@ -66,25 +67,22 @@ public class Homework14 {
         }
         String[] stringArray = sb.toString().split(String.valueOf('-'));
 
-        int[] intArray = new int[stringArray.length];
+        TreeSet<Integer> set = new TreeSet<>();
 
-        for (int i = 0; i < stringArray.length - 1; i++) {
-            if (stringArray[i].isEmpty()) {
-                intArray[i] = 0;
-            } else intArray[i] = Integer.parseInt(stringArray[i]);
-        }
-        return Arrays.stream(intArray).max().getAsInt();
+        for(String s: stringArray) {
+            if (!s.equals("")) set.add(Integer.valueOf(s));
+        } return set.last();
+
     }
-
-    public static String countSequenceOfCharacters(String str) {
+    public static String countSequenceOfCharacters(String str){
         if (str.isEmpty()) return str;
         StringBuilder seq = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
-            String temp = "" + str.charAt(i);
+            StringBuilder temp = new StringBuilder("" + str.charAt(i));
             int count = 1;
             int j = i + 1;
             while (j < str.length() && str.charAt(i) == str.charAt(j)) {
-                temp += str.charAt(j);
+                temp.append(str.charAt(j));
                 j++;
                 count++;
             }

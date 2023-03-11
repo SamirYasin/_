@@ -11,8 +11,8 @@ public class Homework16 {
     public static void main(String[] args) {
         System.out.println(parseData("{104}LA{101}Paris{102}Berlin{103}Chicago{100}London"));
         HashMap<String, Integer> map = new HashMap<>();
-        map.put("Apple", 3);
-        map.put("Mango", 5);
+        map.put("Apple", 5);
+        map.put("Mango", 0);
         System.out.println(calculateTotalPrice2(map));
     }
 
